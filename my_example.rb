@@ -1,19 +1,23 @@
-require File.expand_path("./lib/binary_sort.rb",__dir__)
+require File.expand_path('./lib/binary_tree.rb', __dir__)
+require File.expand_path('./lib/node.rb', __dir__)
 
-ar = BinarySort.new(10)
+node = Node.new(10)
+tree = BinaryTree.new(node)
 
-ar.insert(4)
-ar.insert(7)
-ar.insert(8)
-ar.insert(15)
-ar.insert(13)
-ar.insert(19)
+tree.insert(4)
+tree.insert(7)
+tree.insert(8)
+tree.insert(15)
+tree.insert(13)
+tree.insert(19)
 
-is_there = ar.search_key(ar, 7)
+is_there = tree.search_key(7)
+is_there1 = tree.search_key(20)
+parent = tree.search_parent(19)
+deleted = tree.remove_node(7)
 
-puts "Tree: #{ar}"
 puts "Search Results: #{is_there}"
-
-new_array = ar.remove_key(ar, 8)
-
-puts "New tree: #{new_array}"
+puts "Search Results: #{is_there1}"
+puts "Search Results: #{parent.key}"
+puts "Deleted: #{deleted.inspect}"
+puts "New Tree: #{tree.inspect}"
